@@ -1,0 +1,12 @@
+{"questionsList": [
+    {"question": "What does this CSS do and why is it useful in responsive design? * {box-sizing: border-box;}",
+     "categories": ["CSS", "responsive design"],
+     "answer": "It includes the padding and border in width and height of all elements.  If we set a width on an element, for instance 25%, we can add border or padding while ensuring it remains constant at 25%."},
+    {"question": "What is the basic idea behind CSS? (one sentence)",
+    "categories": ["CSS"],
+    "answer": "In CSS you can use a selector to target an HTML element in the DOM (Document Object Model) and then apply a variety of attributes to that element to change the way it is displayed on the page."},
+    {"question": "What are the three components of a hexadecimal color?  What is the lowest hexadecimal value and what color does it represent?",
+     "categories": ["CSS"],
+     "answer": "A hexadecimal color has three components - red, green, and blue.  Two hexadecimal digits represent each component from 00 - FF.  #000000 is the lowest value and represents black."
+    }
+]}
