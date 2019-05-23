@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --dark-orange: #e3890f;
+    --light-orange: #ff9c17;
+}
+
 .App {
     background: url(joao-silas-65013-unsplash.jpg);
     background-size: cover;
@@ -12,11 +17,32 @@
 
 .flashCard {
     background-color: rgba(255, 255, 255, .85);
+    width: 50%;
+    height: 20%;
 }
 
-.topicBubble {
+.btn-topics {
     color: white;
     font-size: 20px;
     border-radius: 20px;
-    border: 2px solid white;
+    padding: 5px 10px;
+    border: 2px solid var(--light-orange); 
+    display: inline;
+    margin: 10px;
+    transition: background-color .5s, border .2s; 
 }
+
+.btn-topics:hover {
+    background-color: var(--dark-orange);
+    border: 2px solid var(--dark-orange);
+}
+
+i {
+    padding-left: 5px;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+

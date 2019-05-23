@@ -3,54 +3,66 @@ import './App.css';
 let questionBank = require('./questions.json');
 questionBank.questionsList = questionBank.questionsList.filter(obj => (obj.question !== '' && obj.question !== 'PLACEHOLDER'));
 
-class FlashCard extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            question: 'Welcome to my flashcards application!  Happy learning 🙃'
+            question: 'Welcome to my flashcards application!  Happy learning 🙃',
+            answer: 'No answer this time!',
+            selectedTopics: ['JavaScript', 'React', 'CSS']
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.nextQuestion = this.nextQuestion.bind(this);
+        this.removeTopic = this.removeTopic.bind(this);
+        this.showAnswer = this.showAnswer.bind(this);
     }
-    handleClick() {
+    nextQuestion() {
         const index = Math.floor(Math.random() * questionBank.questionsList.length);
         this.setState({
-            question: questionBank.questionsList[index].question
+            question: questionBank.questionsList[index].question,
+            answer: questionBank.questionsList[index].answer
+        });
+    }
+    showAnswer(e) {
+        // Card should flip over 
+        
+        // Show the answer 
+        this.setState({
+            question: this.state.answer
+        });
+        console.log('hi');
+        e.stopPropagation();
+    }
+    removeTopic(e) {
+        // Get text from clicked topic
+        const topic = e.target.id;
+        const filteredTopics = this.state.selectedTopics.filter(object => object !== topic);
+        this.setState({
+            selectedTopics: filteredTopics
         });
     }
     render() {
         return (
-            <div className='flashCard' onClick={this.handleClick}>{this.state.question}
+            <div className='App'>
+            <div className='container-fluid'>
+                <Topics className='topics row' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic}/>
+                <div className='row'>
+                    <FlashCard className='flashCard col-md' question={this.state.question} nextQuestion={this.nextQuestion} showAnswer={this.showAnswer}/>
+                </div>
             </div>
-        );
+            </div>
+    );
     }
 }
 
-class Topics extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedTopics: ['JavaScript', 'React', 'CSS']
-        };
-    }
-    render() {
-        const selectedTopics = this.state.selectedTopics.map(topic => <div className='btn btn-success'>{topic}</div>);
-        return(
-            <div>Topics:{selectedTopics}</div>
-        );
-    }
+const Topics = (props) => {
+    const selectedTopics = props.selectedTopics.map(topic => <div className='btn-topics col-md'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i>
+</div>);
+    return(<div>Topics:{selectedTopics}</div>
+    );
 }
 
-function App() {
-  return (
-    <div className='App'>
-      <div class='row' style={{margin:'0px'}}>
-        <Topics />
-      </div>
-      <div class='row' style={{margin:'0px'}}>
-        <FlashCard />
-      </div>
-    </div>
-  );
+const FlashCard = (props) => {
+    return(<div className='flashCard' onClick={props.nextQuestion}>{props.question}<i className='fa fa-arrow-circle-right' onClick={props.showAnswer}></i></div>);
 }
 
 export default App;
