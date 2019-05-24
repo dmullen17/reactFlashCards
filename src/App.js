@@ -1,5 +1,9 @@
 import React from 'react';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 let questionBank = require('./questions.json');
 questionBank.questionsList = questionBank.questionsList.filter(obj => (obj.question !== '' && obj.question !== 'PLACEHOLDER'));
 
@@ -25,7 +29,7 @@ class App extends React.Component {
     showAnswer(e) {
         // Card should flip over 
         
-        // Show the answer 
+        // Show the answer - just set it to the question - not the best practice.  
         this.setState({
             question: this.state.answer
         });
@@ -42,22 +46,21 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div className='App'>
+            <Container className='App' fluid={true}>
             <div className='container-fluid'>
-                <Topics className='topics row' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic}/>
-                <div className='row'>
-                    <FlashCard className='flashCard col-md' question={this.state.question} nextQuestion={this.nextQuestion} showAnswer={this.showAnswer}/>
-                </div>
+                <Topics className='topics' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic}/>
+            <Row className='row2'>
+                <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion} showAnswer={this.showAnswer}/>
+            </Row>
             </div>
-            </div>
+            </Container>
     );
     }
 }
 
 const Topics = (props) => {
-    const selectedTopics = props.selectedTopics.map(topic => <div className='btn-topics col-md'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i>
-</div>);
-    return(<div>Topics:{selectedTopics}</div>
+    const selectedTopics = props.selectedTopics.map(topic => <Col xs={2} className='btn-topics'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
+    return(<Row className='row1'>Topics:{selectedTopics}</Row>
     );
 }
 

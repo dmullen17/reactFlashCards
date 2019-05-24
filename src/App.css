@@ -19,6 +19,7 @@
     background-color: rgba(255, 255, 255, .85);
     width: 50%;
     height: 20%;
+    font-size: 30px;
 }
 
 .btn-topics {
@@ -30,6 +31,10 @@
     display: inline;
     margin: 10px;
     transition: background-color .5s, border .2s; 
+    max-height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-topics:hover {
@@ -45,4 +50,15 @@ i:hover {
     cursor: pointer;
 }
 
+.row1 {
+    height: 25vh;
+    border: 1px solid red;
+}
+
+.row2 {
+    height: 75vh;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+}
 
