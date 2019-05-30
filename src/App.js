@@ -26,6 +26,7 @@ class App extends React.Component {
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.removeTopic = this.removeTopic.bind(this);
+        this.reset = this.reset.bind(this);
         this.showAnswer = this.showAnswer.bind(this);
     }
     nextQuestion() {
@@ -58,6 +59,13 @@ class App extends React.Component {
             questionsList: filteredQuestionList
         });
     }
+    reset() {
+        this.setState({
+            selectedTopics: topics,
+            questionsList: questionBank.questionsList
+        });
+        console.log(this.state.se)
+    }
     render() {
         return (
             <Container className='App' fluid={true}>
@@ -65,7 +73,15 @@ class App extends React.Component {
             </Nav>
             <Topics className='topics' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic}/>
             <Row className='row2'>
-                <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion} showAnswer={this.showAnswer}/>
+                <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion}/>
+            </Row>
+            <Row className='row3'>
+                <Col xs='auto' className='button-sml'>Choose topics</Col>
+                <Col xs='auto' className='button-sml' onClick={this.nextQuestion}>Next question</Col>
+                <Col xs='auto' className='button-sml' onClick={this.showAnswer}>Show answer</Col>   
+            </Row>
+            <Row className='row4'>
+                <Col xs='auto' className='button-lg' style={{'paddingLeft': '25px', 'paddingRight': '25px'}} onClick={this.reset}>Reset</Col>
             </Row>
             </Container>
     );
@@ -73,13 +89,13 @@ class App extends React.Component {
 }
 
 const Topics = (props) => {
-    const selectedTopics = props.selectedTopics.map(topic => <Col xs={2} className='btn-topics'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
+    const selectedTopics = props.selectedTopics.map(topic => <Col xs='auto' className='btn-topics'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
     return(<Row className='row1'>{selectedTopics}</Row>
     );
 }
 
 const FlashCard = (props) => {
-    return(<div className='flashCard' onClick={props.nextQuestion}>{props.question}<i className='fa fa-arrow-circle-right' onClick={props.showAnswer}></i></div>);
+    return(<div className='flashCard' onClick={props.nextQuestion}>{props.question}</div>);
 }
 
 export default App;
