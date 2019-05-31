@@ -28,6 +28,7 @@ class App extends React.Component {
         this.removeTopic = this.removeTopic.bind(this);
         this.reset = this.reset.bind(this);
         this.showAnswer = this.showAnswer.bind(this);
+        /*this.testText = this.testText.bind(this); */
     }
     nextQuestion() {
         const index = Math.floor(Math.random() * this.state.questionsList.length);
@@ -59,12 +60,16 @@ class App extends React.Component {
             questionsList: filteredQuestionList
         });
     }
+    /*    testText() {
+        this.setState({
+            question: 'TEST TEXT TEST TEXT TEST TEXT  TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT vTEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT TEST TEXT'
+        });
+    }*/
     reset() {
         this.setState({
             selectedTopics: topics,
             questionsList: questionBank.questionsList
         });
-        console.log(this.state.se)
     }
     render() {
         return (
@@ -82,6 +87,7 @@ class App extends React.Component {
             </Row>
             <Row className='row4'>
                 <Col xs='auto' className='button-lg' style={{'paddingLeft': '25px', 'paddingRight': '25px'}} onClick={this.reset}>Reset</Col>
+                {/* <Col xs='auto' className='button-lg' style={{'paddingLeft': '25px', 'paddingRight': '25px'}} onClick={this.testText}>Test</Col> */}
             </Row>
             </Container>
     );
@@ -95,7 +101,7 @@ const Topics = (props) => {
 }
 
 const FlashCard = (props) => {
-    return(<div className='flashCard' onClick={props.nextQuestion}>{props.question}</div>);
+    return(<Col xs='auto' style={{'maxWidth': '70vw'}} className='flashCard' onClick={props.nextQuestion}>{props.question}</Col>);
 }
 
 export default App;

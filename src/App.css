@@ -21,14 +21,15 @@
 
 .flashCard {
     background-color: rgba(255, 255, 255, .95);
-    max-width: 65vw;
-    max-height: 40vh;
+    /*max-width: 65vw; */
+    /*max-height: 40vh; */
     font-size: 5vh;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, .07);
     border: 5px solid var(--light-orange);
     border-radius: 10px;
     padding: 2px 10px;
     color: black;
+    margin-bottom: 5vh;
 }
 
 .btn-topics {
@@ -86,7 +87,7 @@ i:hover {
 }
 
 .row2 {
-    height: 45vh;
+    min-height: 45vh;
     display: flex;
     justify-content: center;
 }
