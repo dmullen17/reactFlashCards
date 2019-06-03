@@ -31,7 +31,7 @@ class App extends React.Component {
         this.showAnswer = this.showAnswer.bind(this);
         /*this.testText = this.testText.bind(this); */
     }
-    nextQuestion() {
+    nextQuestion() {        
         // Restart app is no topics are selected 
         if (this.state.questionsList.length === 0) {
             this.setState({
@@ -43,6 +43,13 @@ class App extends React.Component {
         this.setState({
             question: this.state.questionsList[index].question,
             answer: this.state.questionsList[index].answer
+        });
+        
+        // Remove selected question from questionsList 
+        let questionsListCopy = Array.from(this.state.questionsList);
+        questionsListCopy.splice(index, 1);
+        this.setState({
+            questionsList: questionsListCopy
         });
     }
     showAnswer(e) {
