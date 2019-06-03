@@ -27,10 +27,18 @@ class App extends React.Component {
         this.nextQuestion = this.nextQuestion.bind(this);
         this.removeTopic = this.removeTopic.bind(this);
         this.reset = this.reset.bind(this);
+        this.selectSingleTopic = this.selectSingleTopic.bind(this);
         this.showAnswer = this.showAnswer.bind(this);
         /*this.testText = this.testText.bind(this); */
     }
     nextQuestion() {
+        // Restart app is no topics are selected 
+        if (this.state.questionsList.length === 0) {
+            this.setState({
+                question: 'No topics are selected.  Please choose one or hit reset 😎'
+            });
+            return;
+        }
         const index = Math.floor(Math.random() * this.state.questionsList.length);
         this.setState({
             question: this.state.questionsList[index].question,
@@ -50,7 +58,7 @@ class App extends React.Component {
         //Remove button from flashcard 
     }
     removeTopic(e) {
-        // Get text from clicked topic
+        // Get topic text from clicked topic
         const topic = e.target.id;
         // Filter topics and questions
         const filteredTopics = this.state.selectedTopics.filter(object => object !== topic);
@@ -59,6 +67,7 @@ class App extends React.Component {
             selectedTopics: filteredTopics,
             questionsList: filteredQuestionList
         });
+        e.stopPropagation(); // event will bubble up and trigger selectSingleTopic
     }
     /*    testText() {
         this.setState({
@@ -67,8 +76,18 @@ class App extends React.Component {
     }*/
     reset() {
         this.setState({
+            question: 'Welcome to my flashcards application!  Happy learning 🙃',
+            answer: 'No answer this time!',
             selectedTopics: topics,
             questionsList: questionBank.questionsList
+        });
+    }
+    selectSingleTopic(e) {
+        const topic = e.target.innerText;
+        const filteredQuestionList = this.state.questionsList.filter(object => object.categories.includes(topic));
+        this.setState({
+            selectedTopics: [topic],
+            questionsList: filteredQuestionList
         });
     }
     render() {
@@ -76,7 +95,7 @@ class App extends React.Component {
             <Container className='App' fluid={true}>
             <Nav>
             </Nav>
-            <Topics className='topics' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic}/>
+            <Topics className='topics' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic} selectSingleTopic={this.selectSingleTopic}/>
             <Row className='row2'>
                 <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion}/>
             </Row>
@@ -95,7 +114,7 @@ class App extends React.Component {
 }
 
 const Topics = (props) => {
-    const selectedTopics = props.selectedTopics.map(topic => <Col xs='auto' className='btn-topics'>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
+    const selectedTopics = props.selectedTopics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.selectSingleTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
     return(<Row className='row1'>{selectedTopics}</Row>
     );
 }

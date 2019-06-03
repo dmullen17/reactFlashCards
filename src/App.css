@@ -47,6 +47,7 @@
 }
 
 .btn-topics:hover {
+    cursor: pointer;
     background-color: var(--dark-orange);
     border: 2px solid var(--dark-orange);
 }
@@ -57,6 +58,7 @@ i {
 
 i:hover {
     cursor: pointer;
+    color: black;
 }
 
 .button-sml {
