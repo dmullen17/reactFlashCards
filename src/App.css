@@ -64,7 +64,7 @@ i:hover {
 .button-sml {
     background-color: var(--light-orange);
     border-radius: 20px;
-    padding: 5px 0px;
+    padding: 5px 15px;
     margin: 0px 10px;
     font-size: 2.5vh;
     transition: all .5s;
