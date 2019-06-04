@@ -19,23 +19,36 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            question: 'Welcome to my flashcards application!  Happy learning 🙃',
+            question: 'Welcome to my flashcards application!  Select some topics to get started.  Happy learning 🙃',
             answer: 'No answer this time!',
-            selectedTopics: topics,
-            questionsList: questionBank.questionsList,
+            topics: topics, 
+            selectedTopics: [],
+            questionsList: [],
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.removeTopic = this.removeTopic.bind(this);
         this.reset = this.reset.bind(this);
-        this.selectSingleTopic = this.selectSingleTopic.bind(this);
+        this.addTopic = this.addTopic.bind(this);
         this.showAnswer = this.showAnswer.bind(this);
         /*this.testText = this.testText.bind(this); */
+    }
+    addTopic(e) {
+        const topic = e.target.innerText;
+        const selectedTopics = this.state.selectedTopics
+        selectedTopics.push(topic);        
+        const filteredQuestionList = questionBank.questionsList.filter(object => object.categories.includes(topic));
+        this.setState({
+            selectedTopics: selectedTopics,
+            questionsList: filteredQuestionList
+        });
+        
+        // Apply CSS styling 
     }
     nextQuestion() {        
         // Restart app is no topics are selected 
         if (this.state.questionsList.length === 0) {
             this.setState({
-                question: 'No topics are selected.  Please choose one or hit reset 😎'
+                question: 'No questions remaining.  Please hit reset or select another topic 😎'
             });
             return;
         }
@@ -53,16 +66,12 @@ class App extends React.Component {
         });
     }
     showAnswer(e) {
-        // Card should flip over 
-        
         // Show the answer - just set it to the question - not the best practice.  
         this.setState({
             question: this.state.answer
         });
         // Stop event propogation so nextQuestion isn't triggered
         e.stopPropagation();
-        
-        //Remove button from flashcard 
     }
     removeTopic(e) {
         // Get topic text from clicked topic
@@ -74,7 +83,7 @@ class App extends React.Component {
             selectedTopics: filteredTopics,
             questionsList: filteredQuestionList
         });
-        e.stopPropagation(); // event will bubble up and trigger selectSingleTopic
+        e.stopPropagation(); // event will bubble up and trigger addTopic
     }
     /*    testText() {
         this.setState({
@@ -83,18 +92,10 @@ class App extends React.Component {
     }*/
     reset() {
         this.setState({
-            question: 'Welcome to my flashcards application!  Happy learning 🙃',
+            question: 'Welcome to my flashcards application!  Select some topics to get started.  Happy learning 🙃',
             answer: 'No answer this time!',
-            selectedTopics: topics,
-            questionsList: questionBank.questionsList
-        });
-    }
-    selectSingleTopic(e) {
-        const topic = e.target.innerText;
-        const filteredQuestionList = this.state.questionsList.filter(object => object.categories.includes(topic));
-        this.setState({
-            selectedTopics: [topic],
-            questionsList: filteredQuestionList
+            selectedTopics: [],
+            questionsList: []
         });
     }
     render() {
@@ -102,7 +103,7 @@ class App extends React.Component {
             <Container className='App' fluid={true}>
             <Nav>
             </Nav>
-            <Topics className='topics' selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic} selectSingleTopic={this.selectSingleTopic}/>
+            <Topics className='topics' topics={this.state.topics} selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic} addTopic={this.addTopic}/>
             <Row className='row2'>
                 <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion}/>
             </Row>
@@ -121,8 +122,8 @@ class App extends React.Component {
 }
 
 const Topics = (props) => {
-    const selectedTopics = props.selectedTopics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.selectSingleTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
-    return(<Row className='row1'>{selectedTopics}</Row>
+    const topics = props.topics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.addTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
+    return(<Row className='row1'>{topics}</Row>
     );
 }
 

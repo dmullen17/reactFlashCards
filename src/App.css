@@ -52,6 +52,11 @@
     border: 2px solid var(--dark-orange);
 }
 
+.btn-topics-selected {
+    background-color: var(--dark-orange);
+    border: 2px solid var(--dark-orange);
+}
+
 i {
     padding-left: 5px;
 }
