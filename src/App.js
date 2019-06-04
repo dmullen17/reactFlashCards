@@ -25,24 +25,13 @@ class App extends React.Component {
             selectedTopics: [],
             questionsList: [],
         }
+        this.addTopic = this.addTopic.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.removeTopic = this.removeTopic.bind(this);
         this.reset = this.reset.bind(this);
-        this.addTopic = this.addTopic.bind(this);
+        this.toggleTopic = this.toggleTopic.bind(this);
         this.showAnswer = this.showAnswer.bind(this);
         /*this.testText = this.testText.bind(this); */
-    }
-    addTopic(e) {
-        const topic = e.target.innerText;
-        const selectedTopics = this.state.selectedTopics
-        selectedTopics.push(topic);        
-        const filteredQuestionList = questionBank.questionsList.filter(object => object.categories.includes(topic));
-        this.setState({
-            selectedTopics: selectedTopics,
-            questionsList: filteredQuestionList
-        });
-        
-        // Apply CSS styling 
     }
     nextQuestion() {        
         // Restart app is no topics are selected 
@@ -73,9 +62,7 @@ class App extends React.Component {
         // Stop event propogation so nextQuestion isn't triggered
         e.stopPropagation();
     }
-    removeTopic(e) {
-        // Get topic text from clicked topic
-        const topic = e.target.id;
+    removeTopic(topic) {
         // Filter topics and questions
         const filteredTopics = this.state.selectedTopics.filter(object => object !== topic);
         const filteredQuestionList = this.state.questionsList.filter(object => !(object.categories.includes(topic)));
@@ -83,7 +70,6 @@ class App extends React.Component {
             selectedTopics: filteredTopics,
             questionsList: filteredQuestionList
         });
-        e.stopPropagation(); // event will bubble up and trigger addTopic
     }
     /*    testText() {
         this.setState({
@@ -98,12 +84,31 @@ class App extends React.Component {
             questionsList: []
         });
     }
+    addTopic(topic) {
+        const selectedTopics = this.state.selectedTopics
+        selectedTopics.push(topic);
+        const filteredQuestionList = this.state.questionsList.concat(questionBank.questionsList.filter(object => object.categories.includes(topic)));
+        this.setState({
+            selectedTopics: selectedTopics,
+            questionsList: filteredQuestionList
+        });
+    }
+    toggleTopic(e) {
+        const topic = e.target.innerText;
+        const selectedTopics = this.state.selectedTopics;
+        
+        if (selectedTopics.includes(topic)) {
+            this.removeTopic(topic);
+        } else {
+            this.addTopic(topic);
+        }
+    }
     render() {
         return (
             <Container className='App' fluid={true}>
             <Nav>
             </Nav>
-            <Topics className='topics' topics={this.state.topics} selectedTopics={this.state.selectedTopics} removeTopic={this.removeTopic} addTopic={this.addTopic}/>
+            <Topics className='topics' topics={this.state.topics} selectedTopics={this.state.selectedTopics} toggleTopic={this.toggleTopic}/>
             <Row className='row2'>
                 <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion}/>
             </Row>
@@ -121,10 +126,37 @@ class App extends React.Component {
     }
 }
 
-const Topics = (props) => {
-    const topics = props.topics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.addTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
+{/*const Topics = (props) => {
+    const topics = props.topics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.toggleTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
     return(<Row className='row1'>{topics}</Row>
     );
+}
+*/}
+
+const Topics = (props) => {
+    const topics = props.topics.map(topic => <Topic toggleTopic={props.toggleTopic} topicName={topic}/>)
+    return(<Row className='row1'>{topics}</Row>)
+}
+
+class Topic extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            active: false
+        };
+        this.toggleClass = this.toggleClass.bind(this);
+    }
+    toggleClass() {
+        const currentState = this.state.active;
+        this.setState({ active: !currentState });
+    }
+    render() {
+        return (
+            <Col xs='auto' className={this.state.active ? 'btn-topics btn-topics-selected' : 'btn-topics'} onClick={(e) => {this.toggleClass(); this.props.toggleTopic(e);}}>
+            {this.props.topicName}
+            </Col>
+        );
+    }
 }
 
 const FlashCard = (props) => {
