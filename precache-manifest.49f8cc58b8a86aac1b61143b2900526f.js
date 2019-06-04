@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "af2e563cfacc66d913360204763ad813",
+    "revision": "13edd9b02cc29adcbca1a44eddc039f7",
     "url": "/reactFlashCards/index.html"
   },
   {
-    "revision": "825b5a9e0e837d252b72",
+    "revision": "ab6182f742cab75786df",
     "url": "/reactFlashCards/static/css/2.d094839c.chunk.css"
   },
   {
-    "revision": "87cdd6c40279ac001a70",
-    "url": "/reactFlashCards/static/css/main.16c808b4.chunk.css"
+    "revision": "674e97d88af9cd14bc4c",
+    "url": "/reactFlashCards/static/css/main.ea5e9879.chunk.css"
   },
   {
-    "revision": "825b5a9e0e837d252b72",
-    "url": "/reactFlashCards/static/js/2.51ad12c3.chunk.js"
+    "revision": "ab6182f742cab75786df",
+    "url": "/reactFlashCards/static/js/2.f4fb7d91.chunk.js"
   },
   {
-    "revision": "87cdd6c40279ac001a70",
-    "url": "/reactFlashCards/static/js/main.f3d6d08b.chunk.js"
+    "revision": "674e97d88af9cd14bc4c",
+    "url": "/reactFlashCards/static/js/main.36dc1d3a.chunk.js"
   },
   {
     "revision": "6cc29ab661032784609f",
