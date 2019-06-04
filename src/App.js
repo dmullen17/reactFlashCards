@@ -37,7 +37,7 @@ class App extends React.Component {
         // Restart app is no topics are selected 
         if (this.state.questionsList.length === 0) {
             this.setState({
-                question: 'No questions remaining.  Please hit reset or select another topic 😎'
+                question: 'No questions remaining.  Please select a topic 😎'
             });
             return;
         }
@@ -77,12 +77,15 @@ class App extends React.Component {
         });
     }*/
     reset() {
-        this.setState({
+        window.location.reload();
+        // it would be better to do this by resetting state - but how do i reset the state in the topics button components?
+    {/*    this.setState({
             question: 'Welcome to my flashcards application!  Select some topics to get started.  Happy learning 🙃',
             answer: 'No answer this time!',
             selectedTopics: [],
             questionsList: []
         });
+        */}
     }
     addTopic(topic) {
         const selectedTopics = this.state.selectedTopics
@@ -113,25 +116,15 @@ class App extends React.Component {
                 <FlashCard className='flashCard' question={this.state.question} nextQuestion={this.nextQuestion}/>
             </Row>
             <Row className='row3'>
-                <Col xs='auto' className='button-sml'>Choose topics</Col>
                 <Col xs='auto' className='button-sml' onClick={this.nextQuestion}>Next question</Col>
-                <Col xs='auto' className='button-sml' onClick={this.showAnswer}>Show answer</Col>   
-            </Row>
-            <Row className='row4'>
-                <Col xs='auto' className='button-lg' style={{'paddingLeft': '25px', 'paddingRight': '25px'}} onClick={this.reset}>Reset</Col>
-                {/* <Col xs='auto' className='button-lg' style={{'paddingLeft': '25px', 'paddingRight': '25px'}} onClick={this.testText}>Test</Col> */}
+                <Col xs='auto' className='button-sml' onClick={this.showAnswer}>Show answer</Col>
+                <Col xs='auto' className='button-sml' onClick={this.reset} style={{'paddingLeft': '30px', 'paddingRight': '30px'}}>Reset</Col>
+
             </Row>
             </Container>
     );
     }
 }
-
-{/*const Topics = (props) => {
-    const topics = props.topics.map(topic => <Col xs='auto' className='btn-topics' onClick={props.toggleTopic}>{topic}<i className='fa fa-times' id={topic} onClick={props.removeTopic}></i></Col>);
-    return(<Row className='row1'>{topics}</Row>
-    );
-}
-*/}
 
 const Topics = (props) => {
     const topics = props.topics.map(topic => <Topic toggleTopic={props.toggleTopic} topicName={topic}/>)

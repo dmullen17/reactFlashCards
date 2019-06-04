@@ -12,7 +12,7 @@
 }
 
 .App {
-    background: url(joao-silas-65013-unsplash.jpg);
+    background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .2)), url(joao-silas-65013-unsplash.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -32,8 +32,12 @@
     margin-bottom: 5vh;
 }
 
+.flashCard:hover {
+    cursor: pointer;
+}
+
 .btn-topics {
-    font-size: 3vh;
+    font-size: 3.5vh;
     border-radius: 20px;
     padding: 1vh 1vw;
     border: 2px solid var(--light-orange); 
@@ -67,22 +71,14 @@ i:hover {
 
 .button-sml {
     background-color: var(--light-orange);
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 5px 15px;
     margin: 0px 10px;
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     transition: all .5s;
 }
 
-.button-lg {
-    background-color: var(--light-orange);
-    border-radius: 30px;
-    font-size: 4vh;
-    transition: all .5s;
-}
-
-.button-sml:hover, 
-.button-lg:hover {
+.button-sml:hover {
     cursor: pointer;
     background-color: var(--dark-orange);
     transform: scale(1.06);
