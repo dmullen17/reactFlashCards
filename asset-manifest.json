@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/reactFlashCards/static/css/main.e26ad759.chunk.css",
-    "main.js": "/reactFlashCards/static/js/main.af5b7370.chunk.js",
-    "main.js.map": "/reactFlashCards/static/js/main.af5b7370.chunk.js.map",
+    "main.css": "/reactFlashCards/static/css/main.16c808b4.chunk.css",
+    "main.js": "/reactFlashCards/static/js/main.f3d6d08b.chunk.js",
+    "main.js.map": "/reactFlashCards/static/js/main.f3d6d08b.chunk.js.map",
     "runtime~main.js": "/reactFlashCards/static/js/runtime~main.e4b287f7.js",
     "runtime~main.js.map": "/reactFlashCards/static/js/runtime~main.e4b287f7.js.map",
-    "static/css/2.d3366266.chunk.css": "/reactFlashCards/static/css/2.d3366266.chunk.css",
-    "static/js/2.b0867797.chunk.js": "/reactFlashCards/static/js/2.b0867797.chunk.js",
-    "static/js/2.b0867797.chunk.js.map": "/reactFlashCards/static/js/2.b0867797.chunk.js.map",
+    "static/css/2.d094839c.chunk.css": "/reactFlashCards/static/css/2.d094839c.chunk.css",
+    "static/js/2.51ad12c3.chunk.js": "/reactFlashCards/static/js/2.51ad12c3.chunk.js",
+    "static/js/2.51ad12c3.chunk.js.map": "/reactFlashCards/static/js/2.51ad12c3.chunk.js.map",
     "index.html": "/reactFlashCards/index.html",
-    "precache-manifest.9a40f9bdcf79ceac0553320bde3182de.js": "/reactFlashCards/precache-manifest.9a40f9bdcf79ceac0553320bde3182de.js",
+    "precache-manifest.f2d26acdd820835f5958c795f812ebbe.js": "/reactFlashCards/precache-manifest.f2d26acdd820835f5958c795f812ebbe.js",
     "service-worker.js": "/reactFlashCards/service-worker.js",
-    "static/css/2.d3366266.chunk.css.map": "/reactFlashCards/static/css/2.d3366266.chunk.css.map",
-    "static/css/main.e26ad759.chunk.css.map": "/reactFlashCards/static/css/main.e26ad759.chunk.css.map",
+    "static/css/2.d094839c.chunk.css.map": "/reactFlashCards/static/css/2.d094839c.chunk.css.map",
+    "static/css/main.16c808b4.chunk.css.map": "/reactFlashCards/static/css/main.16c808b4.chunk.css.map",
     "static/media/font-awesome.min.css": "/reactFlashCards/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/App.css": "/reactFlashCards/static/media/joao-silas-65013-unsplash.bc847bd0.jpg"
   }
