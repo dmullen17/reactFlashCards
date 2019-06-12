@@ -1,3 +1,15 @@
+## Welcome to my personal flash cards application! 
+I personally designed this application so that I could review concepts I've learned each day with my morning coffee.  
+
+## App Strucuture 
+
+### React Components
+The `App` component's internal state manages the current question and answer, the current selected topics, and the current available questions.  Its methods allow the user to toggle a topic, go to the next question, show an answer, and reset the application.  The `Topic` component is dynamically generated for each topic in the underlying `questions.json` file.  Its internal state manages whether or not a `Topic` is active. 
+
+### Stateless functional components
+`Topics` is a container for and dynamically generates the `Topic` components, and passes the `toggleDisplay` method through props.  `FlashCard` is a container for the displayed question and passes the `nextQuestion` method on through props.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
