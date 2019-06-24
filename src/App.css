@@ -69,6 +69,11 @@ i:hover {
     color: black;
 }
 
+a:hover {
+    color: green;
+    text-decoration: none;
+}
+
 .button-sml {
     background-color: var(--light-orange);
     border-radius: 30px;
@@ -82,6 +87,19 @@ i:hover {
     cursor: pointer;
     background-color: var(--dark-orange);
     transform: scale(1.06);
+}
+
+.button-github {
+    border-radius: 3px; 
+    padding: 2px;
+    background: gray;
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+}
+
+span {
+    color: black;
 }
 
 .row1 {
@@ -105,4 +123,20 @@ i:hover {
     justify-content: center;
     margin-top: 30px;
 }
+
+
+.btn-default {
+    border-radius: 3px;
+    padding: 2px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
 

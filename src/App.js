@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
+import LogoGithub from 'react-ionicons/lib/LogoGithub';
 
 const flatten = function(arr) {
   return arr.reduce(function (flat, toFlatten) {
@@ -78,7 +79,7 @@ class App extends React.Component {
     }*/
     reset() {
         window.location.reload();
-        // it would be better to do this by resetting state - but how do i reset the state in the topics button components?
+        // it would be better to do this by resetting state
     {/*    this.setState({
             question: 'Welcome to my flashcards application!  Select some topics to get started.  Happy learning 🙃',
             answer: 'No answer this time!',
@@ -119,7 +120,9 @@ class App extends React.Component {
                 <Col xs='auto' className='button-sml' onClick={this.nextQuestion}>Next question</Col>
                 <Col xs='auto' className='button-sml' onClick={this.showAnswer}>Show answer</Col>
                 <Col xs='auto' className='button-sml' onClick={this.reset} style={{'paddingLeft': '30px', 'paddingRight': '30px'}}>Reset</Col>
-
+            </Row>
+            <Row className='row4'>
+              <div className='button-github'><a href="https://github.com/dmullen17/timestamp_api" target="_blank"><LogoGithub fontSize="20px" color="black"/>&nbsp;&nbsp;&nbsp;View it on Github</a></div>
             </Row>
             </Container>
     );
