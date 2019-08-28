@@ -1,5 +1,5 @@
 ## Flash Cards 
-[![CodeFactor](https://www.codefactor.io/repository/github/dmullen17/smartspotifyplaylists/badge/master)](https://www.codefactor.io/repository/github/dmullen17/smartspotifyplaylists/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/dmullen17/reactflashcards/badge)](https://www.codefactor.io/repository/github/dmullen17/reactflashcards)
   
 Welcome to my personal flash cards application! I designed this application so that I could review concepts I've learned each day with my morning coffee.  
 

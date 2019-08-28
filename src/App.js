@@ -122,7 +122,7 @@ class App extends React.Component {
                 <Col xs='auto' className='button-sml' onClick={this.reset} style={{'paddingLeft': '30px', 'paddingRight': '30px'}}>Reset</Col>
             </Row>
             <Row className='row4'>
-              <div className='button-github'><a href="https://github.com/dmullen17/timestamp_api" target="_blank"><LogoGithub fontSize="20px" color="black"/>&nbsp;&nbsp;&nbsp;View it on Github</a></div>
+              <div className='button-github'><a href='https://github.com/dmullen17/reactFlashCards' target='_blank' rel='noreferrer noopener'><LogoGithub fontSize="20px" color="black"/>&nbsp;&nbsp;&nbsp;View it on Github</a></div>
             </Row>
             </Container>
     );
