@@ -1,5 +1,7 @@
-## Welcome to my personal flash cards application! 
-I personally designed this application so that I could review concepts I've learned each day with my morning coffee.  
+## Flash Cards 
+[![CodeFactor](https://www.codefactor.io/repository/github/dmullen17/smartspotifyplaylists/badge/master)](https://www.codefactor.io/repository/github/dmullen17/smartspotifyplaylists/overview/master)
+  
+Welcome to my personal flash cards application! I designed this application so that I could review concepts I've learned each day with my morning coffee.  
 
 ## App Strucuture 
 
